@@ -22,26 +22,28 @@ function setup() {
   dog.addImage(sadDog);
   dog.scale=0.15;
   
-  feed=createButton("Feed the dog");
-  feed.position(700,95);
-  feed.mousePressed(feedDog);
-
-
-  // addFood=createButton("Add Food");
-  // addFood.position(800,95);
-  // addFood.Pressed(addFoods);
-
-  // addFood.createButton("Add Food");
-  // addFood.position(800,95);
-  // addFood.mousePressed(addFoods);
-
-  //  addFood=createButton("Add Food");
-  // addFood.position(800,95);
-  // addFood.mousePressed(addFoods);
-
-  // addFood=Button("Add Food");
-  // addFood.position(800,95);
-  // addFood.mousePressed(addFoods);
+  //Uncomment the correct code to create 
+  /*feed=createButton("Feed the dog");
+  feed.position(700,95);*/
+  
+  /*feed=createbutton("Feed the dog");
+  feed.position(700,95);*/
+  
+  /*feed=createButton("Feed the dog");
+  feed.position(70,950);*/
+  
+  /*feed=createButton("Feed the dog");
+  feed.Position(700,95);*/
+  
+  //Uncomment the correct code to call FeedDog() using mousePressed
+  //feed.Pressed(feedDog);
+  //feed.mousePress(feedDog);
+  //feed.mousePressed(feedDog);
+  //feed.mousePressed(addfoods);
+ 
+  addFood=createButton("Add Food");
+  addFood.position(800,95);
+  addFood.mousePressed(addFoods);
 
 }
 
@@ -56,6 +58,14 @@ function draw() {
  
   fill(255,255,254);
   textSize(15);
+
+  if(lastFed>=12){
+    text("Last Feed : "+ lastFed%12 + " PM", 350,30);
+   }else if(lastFed==0){
+     text("Last Feed : 12 AM",350,30);
+   }else{
+     text("Last Feed : "+ lastFed + " AM", 350,30);
+   }
   
   drawSprites();
 }
@@ -78,38 +88,33 @@ function feedDog(){
       foodObj.updateFoodStock(food_stock_val -1);
   }
   
-  database.ref('/').update({
+  //Uncomment correct code block to update food quantity and fed timing
+  /*database.ref('/').OnUpdate({
     Food:foodObj.getFoodStock(),
     FeedTime:hour()
-  })
+  })*/
+  
+  /*database.ref('/').Update({
+    Food:foodObj.getFoodStock(),
+    FeedTime:hour()
+  })*/
+    
+  /*database.ref('/').update({
+    Food:foodObj.getFoodStock(),
+    FeedTime:hour()
+  })*/
+   
+  /*database.ref('/').update({
+    Food:foodObj.getFoodStock,
+    FeedTime:hour()
+  })*/
+  
 }
 
-
-//function to add food in stock
-// function addFoods(){
-//   foodS--;
-//   database.ref('/').update({
-//     Food:foodS
-//   })
-// }
-
-// function addFoods(){
-//   foodS++;
-//   database.ref('/').update({
-//     Food:foodS
-//   })
-// }
-
-// function addFoods(){
-//   foodS++;
-//   database.ref().update({
-//     Food:foodS
-//   })
-// }
-
-// function addFoods(){
-//   foodS++;
-//   database.ref('/').({
-//     Food:foodS
-//   })
-// }
+//function to add food stock
+function addFoods(){
+  foodS++;
+  database.ref('/').update({
+    Food:foodS
+  })
+}
